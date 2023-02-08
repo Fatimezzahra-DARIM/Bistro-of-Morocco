@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PlatsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::resource('/plat', PlatsController::class);
+
 Route::get('/', function () {
-    return view('first');
+    return view('welcome');
 });
+// Route::get('/', function () {
+//     return view('first');
+// });
+
 
 Auth::routes();
 
