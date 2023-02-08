@@ -18,6 +18,11 @@ class PlatsController extends Controller
         $plats= Plat::all();
         return view('plats.index')->with('plats',$plats);
     }
+    public function indexx()
+    {
+        $plats= Plat::all();
+        return view('home')->with('plats',$plats);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +44,14 @@ class PlatsController extends Controller
     //  * @return \Illuminate\Http\Response
     public function store(Request $request)
     {
+
         $input=$request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
         Plat::create($input);
         return redirect('plat')->with('flash_message', 'Plat Addedd!');
     }
@@ -82,6 +94,14 @@ class PlatsController extends Controller
     {
         $plat=Plat::find($id);
         $input=$request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        } else {
+            unset($input['image']);
+        }
         $plat->update($input);
         return redirect('plat')->with('flash_message','Plat Updates!');
     }

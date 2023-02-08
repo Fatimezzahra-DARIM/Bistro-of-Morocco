@@ -4,7 +4,7 @@
   <div class="card-header">Plats Page</div>
   <div class="card-body">
       
-      <form action="{{ url('plat') }}" method="post">
+      <form action="{{ url('plat') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <label>Image</label></br>
         <input type="file" class="form-control" required name="image">

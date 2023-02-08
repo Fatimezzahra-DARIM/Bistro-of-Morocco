@@ -16,6 +16,7 @@ use App\Http\Controllers\PlatsController;
 
 Route::resource('/plat', PlatsController::class);
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,3 +28,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PlatsController::class, 'indexx'])->name('lemhome');
+

@@ -29,7 +29,7 @@
                                 @foreach($plats as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->image }}</td>
+                                        <td><img src="/images/{{ $item->image }}" alt="" width="200px"></td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->Description }}</td>
                                         <td>{{ $item->price }}</td>
