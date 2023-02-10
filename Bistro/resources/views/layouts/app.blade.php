@@ -55,8 +55,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Profil
+                                    <a class="dropdown-item" href="{{route('editing')}}">Profil
                                     </a>
+                                    @if (Auth::user()->role == 1 )
+                                    <a class="dropdown-item" href="/plat">Dashboard
+                                    </a>
+                                    @endif
                                         {{-- {{ route('profil') }} --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

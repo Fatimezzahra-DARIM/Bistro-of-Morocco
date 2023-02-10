@@ -37,5 +37,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [PlatsController::class, 'indexx'])->name('lemhome');
 Route::get('/profil', [ProfilController::class, 'index'])->name('lememhome');
 
-Route::get('/pedit/{id}',[ProfilController::class , 'edit'])->name('editing');
+Route::get('/pedit',[ProfilController::class , 'edit'])->name('editing');
 Route::patch('/profil/{id}', [ProfilController::class,'update']);
+Route::put('/profil/password', [ProfilController::class, 'updatepassword'])->name('update-password');
+
+

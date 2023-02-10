@@ -5,7 +5,12 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Plats CRUD</h2>
+                    
+                        <div class="d-flex justify-content-between"> 
+                                <h4>Plats CRUD</h4>
+                            <a href="/profil" class="btn btn-success btn-sm  text-center" title="">Change Role</a></div>
+                       
+
                     </div>
                     <div class="card-body">
                         <a href="{{ url('/plat/create') }}" class="btn btn-success btn-sm" title="Add New plat">

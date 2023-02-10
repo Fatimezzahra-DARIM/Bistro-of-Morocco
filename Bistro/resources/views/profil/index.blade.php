@@ -26,7 +26,7 @@
                                         <td>{{ $item->email }}</td>
                                         {{-- <td>{{ $item->price }}</td> --}}
                                         <td>
-                                            <a href="{{ route('editing',$item->id) }}" title="Edit profil"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ route('editing') }}" title="Edit profil"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             <form method="POST" action="{{ url('/profil' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}

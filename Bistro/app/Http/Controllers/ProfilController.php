@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -31,9 +33,10 @@ class ProfilController extends Controller
     //     return view('profils.show')->with('profils', $profil);
     // }
     
-    public function edit($id)
+    public function edit()
     {
-        $profil = User::find($id);
+        
+        $profil = User::find(Auth::user()->id);
         return view('profil.edit')->with('profils', $profil);
     }
 
@@ -43,6 +46,25 @@ class ProfilController extends Controller
         $profil ->fill($request->all()) ;
         $profil->update();
         return redirect()->back()->with('flash_message', 'profil Updated!');
+    }
+    public function updatePassword(Request $request)
+    {
+        $profil = User::findOrFail(Auth::user()->id);
+       $validated = $request->validate([
+        'oldPassword'=> 'required',
+        'newPassword'=> 'required',
+        'confirmPassword'=> 'required|same:newPassword',
+       ]);
+    //    echo  Hash::make($validated['oldPassword']);
+    //    echo '<hr>'. Auth::user()->password;
+        if( Hash::check($validated['oldPassword'] , Auth::user()->password)){
+            $profil->password = Hash::make($validated['newPassword']);
+            $profil->update();
+
+            return redirect()->back()->with('flash_message', 'profil Updated!');
+        }
+        
+        return redirect()->back()->with('error_message', 'Password incorrect!');
     }
     
     public function destroy($id)
