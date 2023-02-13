@@ -61,6 +61,12 @@
                                     <a class="dropdown-item" href="/plat">Dashboard
                                     </a>
                                     @endif
+                                    @if (Auth::user()->role == 3 )
+                                    <a class="dropdown-item" href="/plat">Dashboard
+                                    </a>
+                                    <a class="dropdown-item" href="/profil">change Role
+                                    </a>
+                                    @endif
                                         {{-- {{ route('profil') }} --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

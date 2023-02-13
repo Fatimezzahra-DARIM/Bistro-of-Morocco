@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class role
+class roleAdmin
 {
     /**
      * Handle an incoming request.
@@ -18,12 +17,8 @@ class role
      */
     public function handle(Request $request, Closure $next)
     {
-
-        // echo "hi super Admin";
-        $admin = Auth::user()->role;
-        if($admin==3){
-            // echo "hi super Admin";
-             return $next($request);
+        if(Auth::user()->role==1 ){
+            return $next($request);
         }
         abort(403);
     }

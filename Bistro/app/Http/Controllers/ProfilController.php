@@ -72,4 +72,15 @@ class ProfilController extends Controller
         User::destroy($id);
         return redirect('profil')->with('flash_message', 'profil deleted!');  
     }
+    public function changeRole($id){
+        $user = User::find($id);
+        if(!$user->role){
+            $user->role=true;
+
+        }else{
+            $user->role = false;
+        }
+        $user->save(); 
+        return redirect('profil')->with('flash_message', 'Role changed!');
+    }
 }
