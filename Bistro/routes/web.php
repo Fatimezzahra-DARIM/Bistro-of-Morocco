@@ -16,37 +16,21 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::resource('/plat', PlatsController::class)->middleware('auth', 'roleAdminSup');
-// Route::resource('profil', ProfilController::class);
+Route::resource('/plat', PlatsController::class)->middleware('roleAdminSup');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
-//     return view('first');
-// });
-
-// Route::get('/profil', function () {
-//     return view('profil.index');
-// });
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [PlatsController::class, 'indexx'])->name('lemhome');
-
-// Route::group(['middleware'=>[]],function(){
-    Route::get('/profil', [ProfilController::class, 'index'])->name('lememhome')->middleware('role');
-// });
-
-// Route::group(['middleware' => ['role', 'roleAdmin']], function () {
-//     Route::get('/plat', [ProfilController::class, 'indexx']);
-// })->name('lememhome');
-
+Route::get('/profil', [ProfilController::class, 'index'])->name('lememhome')->middleware('role');
 Route::get('/pedit',[ProfilController::class , 'edit'])->name('editing');
-// Route::patch('/profil/{id}', [ProfilController::class,'update']);
 Route::put('/profil/password', [ProfilController::class, 'updatepassword'])->name('update-password');
+Route::patch('/profil/{id}', [ProfilController::class, 'update']);
 Route::delete('/profil/{id}', [ProfilController::class, 'destroy']);
 Route::get('/role/{id}', [ProfilController::class, 'changeRole']);
 

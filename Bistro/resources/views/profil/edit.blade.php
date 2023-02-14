@@ -11,7 +11,7 @@
             <label>Name</label></br>
             <input type="text" name="name" id="name" value="{{$profils->name}}" class="form-control"></br>
             <label>email</label></br>
-            <input type="text" name="Description" id="Description" value="{{$profils->email}}" class="form-control"></br>
+            <input type="text" name="email" id="email" value="{{$profils->email}}" class="form-control"></br>
             <input type="submit" value="Update" class="btn btn-success"></br>
         </form>
 

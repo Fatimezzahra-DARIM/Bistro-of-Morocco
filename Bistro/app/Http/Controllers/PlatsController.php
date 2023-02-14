@@ -8,12 +8,6 @@ use App\Models\Plat;
 
 class PlatsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     *
-     */ 
-    // @return \Illuminate\Http\Response
     public function index()
     {
         $plats= Plat::all();
@@ -24,25 +18,10 @@ class PlatsController extends Controller
         $plats= Plat::all();
         return view('home')->with('plats',$plats);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * 
-     */
-    // @return \Illuminate\Http\Response
     public function create()
     {
         return view('plats.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * 
-     */
-    // @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
     public function store(Request $request)
     {
 
@@ -56,41 +35,16 @@ class PlatsController extends Controller
         Plat::create($input);
         return redirect('plat')->with('flash_message', 'Plat Addedd!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * 
-     */
-    // @param  int  $id
-    //  * @return \Illuminate\Http\Response
     public function show($id)
     {
        $plat=Plat::find($id);
        return view ('plats.show')->with('plats',$plat); 
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     *
-     */
-    //  @param  int  $id
-    //  * @return \Illuminate\Http\Response
     public function edit($id)
     {
         $plat=Plat::find($id);
        return view ('plats.edit')->with('plats',$plat);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * 
-     */
-    // @param  \Illuminate\Http\Request  $request
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
     public function update(Request $request, $id)
     {
         $plat=Plat::find($id);
@@ -108,14 +62,6 @@ class PlatsController extends Controller
         $plat->update($input);
         return redirect('plat')->with('flash_message','Plat Updates!');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     *
-     */
-    //  @param  int  $id
-    //  * @return \Illuminate\Http\Response
     public function destroy($id)
     {
         $plat = Plat::find($id);

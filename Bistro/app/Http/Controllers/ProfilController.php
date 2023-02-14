@@ -15,24 +15,6 @@ class ProfilController extends Controller
         return view ('profil.index')->with('profils', $profils);
     }
     
-    // public function create()
-    // {
-    //     return view('profils.create');
-    // }
-  
-    // public function store(Request $request)
-    // {
-    //     $input = $request->all();
-    //     User::create($input);
-    //     return redirect('profil')->with('flash_message', 'profil Addedd!');  
-    // }
-    
-    // public function show($id)
-    // {
-    //     $profil = User::find($id);
-    //     return view('profils.show')->with('profils', $profil);
-    // }
-    
     public function edit()
     {
         
